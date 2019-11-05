@@ -22,13 +22,24 @@ public class ActivityInviteCodeDaoTest {
     private ActivityInviteCodeDao activityInviteCodeDao;
 
     @Test
-    public void test_activityInviteCodeDao(){
+    public void test_activityInviteCodeDao() {
         try {
             List<ActivityInviteCode> activityInviteCodes = activityInviteCodeDao.selectList(null);
             Assert.assertEquals(1, activityInviteCodes.size());
             log.info("test_activityInviteCodeDao success");
         } catch (Exception e) {
-            log.error("{}",e);
+            log.error("{}", e);
+        }
+    }
+
+    @Test
+    public void test_getAll() {
+        try {
+            List<ActivityInviteCode> activityInviteCodes = activityInviteCodeDao.get1stWhenPhoneNull();
+            Assert.assertEquals(1, activityInviteCodes.size());
+            log.info("test_getAll success");
+        } catch (Exception e) {
+            log.error("{}", e);
         }
     }
 

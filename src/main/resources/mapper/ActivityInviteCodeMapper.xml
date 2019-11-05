@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xs.blong.index.dao.ActivityInviteCodeDao">
+
+    <sql id="base_columns">
+    id,phone,invit_code,is_delete,gmt_create,create_time,gmt_modify,modify_time
+    </sql>
+
+    <select id="get1stWhenPhoneNull" resultType="com.xs.blong.index.entity.ActivityInviteCode">
+        select
+        <include refid="base_columns"/>
+        from activity_invite_code
+        where is_delete = 'N'
+        and phone is null limit 1;
+    </select>
+
+</mapper>
