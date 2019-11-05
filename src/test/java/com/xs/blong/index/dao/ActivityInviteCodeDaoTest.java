@@ -35,8 +35,7 @@ public class ActivityInviteCodeDaoTest {
     @Test
     public void test_getAll() {
         try {
-            List<ActivityInviteCode> activityInviteCodes = activityInviteCodeDao.get1stWhenPhoneNull();
-            Assert.assertEquals(1, activityInviteCodes.size());
+            ActivityInviteCode activityInviteCodes = activityInviteCodeDao.get1stWhenPhoneNull();
             log.info("test_getAll success");
         } catch (Exception e) {
             log.error("{}", e);
