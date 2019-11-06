@@ -1,9 +1,11 @@
 package com.xs.blong.index.entity;
 
+import lombok.Data;
+
 import java.io.Serializable;
 import java.util.Date;
 
-
+@Data
 public class BaseDo implements Serializable {
 
     private Long id;

@@ -51,6 +51,8 @@ public class ActivityApiService {
             throw new BlongException(ErrorType.COMMON_DB_ERROR);
         }
 
+        resp.setInvitCode(activityInviteCode.getInvitCode());
+
         log.info("ActivityApiService.doGetInvitationCode,resp={}", resp);
         return resp;
     }

@@ -2,11 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.xs.blong.index.dao.ActivityInviteCodeDao">
 
+    <resultMap id="result_map" type="com.xs.blong.index.entity.ActivityInviteCode">
+        <id property="id" column="id" />
+        <result property="phone" column="phone" />
+        <result property="invitCode" column="invit_code" />
+        <result property="isDelete" column="is_delete" />
+        <result property="gmtCreate" column="gmt_create" />
+        <result property="createTime" column="create_time" />
+        <result property="gmtModify" column="gmt_modify" />
+        <result property="modifyTime" column="modify_time" />
+    </resultMap>
+
     <sql id="base_columns">
     id,phone,invit_code,is_delete,gmt_create,create_time,gmt_modify,modify_time
     </sql>
 
-    <select id="get1stWhenPhoneNull" resultType="com.xs.blong.index.entity.ActivityInviteCode">
+    <select id="get1stWhenPhoneNull" resultMap="result_map">
         select
         <include refid="base_columns"/>
         from activity_invite_code

@@ -36,9 +36,15 @@ public class ActivityApi {
         }
 
         GetInvitationCodeReq request = JsonUtil.toObject(req, GetInvitationCodeReq.class);
+
         GetInvitationCodeResp response = new GetInvitationCodeResp();
+        response.setReqNo(request.getReqNo());
         try {
+
+            request.verify();
+
             response = activityApiService.doGetInvitationCode(request);
+
         } catch (Exception e) {
             log.warn("ActivityApi.getInvitationCode ERROR,e={}", e);
             if (e instanceof BlongException) {

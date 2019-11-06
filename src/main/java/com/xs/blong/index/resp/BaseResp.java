@@ -1,9 +1,11 @@
 package com.xs.blong.index.resp;
 
 import com.xs.blong.index.util.UUIDUtil;
+import lombok.Data;
 
 import java.io.Serializable;
 
+@Data
 public class BaseResp implements Serializable {
 
     /**
