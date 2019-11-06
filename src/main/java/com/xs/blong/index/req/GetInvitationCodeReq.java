@@ -19,7 +19,7 @@ public class GetInvitationCodeReq extends BaseReq {
         }
         String other = super.verify();
         if (other != null) {
-            throw new BlongException(ErrorType.COMMON_REQ_ERROR);
+            throw new BlongException(ErrorType.COMMON_ERROR, other);
         }
         return null;
     }

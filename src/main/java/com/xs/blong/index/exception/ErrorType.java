@@ -8,6 +8,7 @@ public enum ErrorType {
     /**
      * 通用异常
      **********************/
+    COMMON_ERROR        ("0010000", "%s"),
     COMMON_REQ_ERROR    ("0010001", "请求报文为空或异常"),
     COMMON_DB_ERROR     ("0010001", "数据库操作异常"),
 

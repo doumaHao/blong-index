@@ -61,4 +61,46 @@ public class ActivityApi {
         log.info("ActivityApi.getInvitationCode END,response={}", response);
         return JsonUtil.toJson(response);
     }
+
+
+    /**
+     * 保存邀请渠道信息
+     *
+     * @param req
+     * @return
+     */
+    @ApiOperation(value = "保存邀请渠道信息", notes = "保存邀请渠道信息")
+    public String saveInvitationChannel(String req) {
+        log.info("ActivityApi.saveInvitationChannel BEGIN,reqJson={}", req);
+
+        if (StringUtils.isEmpty(req)) {
+            log.warn("ActivityApi.saveInvitationChannel WARN[请求报文异常]，reqJson={}", req);
+            return BaseResp.fastFail().toString();
+        }
+
+        GetInvitationCodeReq request = JsonUtil.toObject(req, GetInvitationCodeReq.class);
+
+        GetInvitationCodeResp response = new GetInvitationCodeResp();
+        response.setReqNo(request.getReqNo());
+        try {
+
+            request.verify();
+
+            response = activityApiService.doGetInvitationCode(request);
+
+        } catch (Exception e) {
+            log.warn("ActivityApi.saveInvitationChannel ERROR,e={}", e);
+            if (e instanceof BlongException) {
+                BlongException be = (BlongException) e;
+                response.structureFail(request.getReqNo(), be.getCode(), be.getMessage());
+            } else {
+                response.structureFail(request.getReqNo(), null, null);
+            }
+        }
+        log.info("ActivityApi.saveInvitationChannel END,response={}", response);
+        return JsonUtil.toJson(response);
+    }
+
+
+
 }

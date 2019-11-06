@@ -6,6 +6,8 @@
         <id property="id" column="id" />
         <result property="phone" column="phone" />
         <result property="invitCode" column="invit_code" />
+        <result property="session" column="session" />
+        <result property="ip" column="ip" />
         <result property="isDelete" column="is_delete" />
         <result property="gmtCreate" column="gmt_create" />
         <result property="createTime" column="create_time" />
@@ -14,7 +16,7 @@
     </resultMap>
 
     <sql id="base_columns">
-    id,phone,invit_code,is_delete,gmt_create,create_time,gmt_modify,modify_time
+    id,phone,invit_code,session,ip,is_delete,gmt_create,create_time,gmt_modify,modify_time
     </sql>
 
     <select id="get1stWhenPhoneNull" resultMap="result_map">

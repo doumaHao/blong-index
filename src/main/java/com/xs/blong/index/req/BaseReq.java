@@ -1,6 +1,7 @@
 package com.xs.blong.index.req;
 
 import lombok.Data;
+import org.springframework.util.StringUtils;
 
 import java.io.Serializable;
 
@@ -34,6 +35,12 @@ public class BaseReq implements Serializable {
      * @return
      */
     public String verify() {
+        if(StringUtils.isEmpty(this.session)){
+            return "session不能为空";
+        }
+        if(StringUtils.isEmpty(this.reqNo)){
+            return "请求流水号不能为空";
+        }
         return null;
     }
 }

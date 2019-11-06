@@ -3,19 +3,19 @@ package com.xs.blong.index.entity;
 import lombok.Data;
 
 /**
- * 活动邀请码表
+ * 活动邀请渠道表
  */
 @Data
-public class ActivityInviteCode extends BaseDo {
+public class ActivityInviteChannel extends BaseDo {
 
     /**
-     * 手机号
+     * 邀请渠道
      */
-    private String phone;
+    private String channel;
     /**
-     * 邀请码
+     * 邀请种类 index:首页 down:下载
      */
-    private String invitCode;
+    private String type;
     /**
      * session
      */
