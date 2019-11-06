@@ -6,6 +6,8 @@ import com.xs.blong.index.req.GetInvitationCodeReq;
 import com.xs.blong.index.resp.BaseResp;
 import com.xs.blong.index.resp.GetInvitationCodeResp;
 import com.xs.blong.index.util.JsonUtil;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,7 @@ import org.springframework.util.StringUtils;
 /**
  * 活动API
  */
+@Api("活动API")
 @Slf4j
 @Service
 public class ActivityApi {
@@ -27,6 +30,7 @@ public class ActivityApi {
      * @param req
      * @return
      */
+    @ApiOperation(value = "获取邀请码", notes = "获取邀请码")
     public String getInvitationCode(String req) {
         log.info("ActivityApi.getInvitationCode BEGIN,reqJson={}", req);
 

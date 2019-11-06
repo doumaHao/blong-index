@@ -2,7 +2,8 @@ package com.xs.blong.index.web.rest;
 
 import com.xs.blong.index.dao.ActivityInviteCodeDao;
 import com.xs.blong.index.resp.BaseResp;
-import com.xs.blong.index.util.JsonUtil;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -24,6 +25,8 @@ public class ApiController {
     @Autowired
     private ApplicationContext applicationContext;
 
+    @ApiOperation(value = "健康检查", notes = "健康检查")
+    @ApiResponse(code = 1002, response = String.class, message = "返回ok表示正常")
     @GetMapping("/ok")
     public String ok() {
         return "ok";
