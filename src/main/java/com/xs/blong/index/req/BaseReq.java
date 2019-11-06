@@ -8,6 +8,10 @@ import java.io.Serializable;
 public class BaseReq implements Serializable {
 
     /**
+     * session
+     */
+    private String session;
+    /**
      * 请求流水号
      */
     private String reqNo;
