@@ -1,5 +1,6 @@
 package com.xs.blong.index.resp;
 
+import com.xs.blong.index.req.BaseReq;
 import com.xs.blong.index.util.UUIDUtil;
 import lombok.Data;
 
@@ -27,6 +28,13 @@ public class BaseResp implements Serializable {
     private String msg;
 
     public void structureSuccess() {
+        this.respNo = UUIDUtil.uuid();
+        this.status = "000000";
+        this.msg = "请求成功";
+    }
+
+    public void structureSuccess(BaseReq req) {
+        this.reqNo = req.getReqNo();
         this.respNo = UUIDUtil.uuid();
         this.status = "000000";
         this.msg = "请求成功";

@@ -9,6 +9,8 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 @SuppressWarnings("ALL")
 @Slf4j
@@ -19,6 +21,7 @@ public class ActivityApiTest {
     @Autowired
     private ActivityApi activityApi;
 
+    @Transactional(rollbackFor = Exception.class)
     @Test
     public void test_getInvitationCode() {
         try {
@@ -31,6 +34,7 @@ public class ActivityApiTest {
         } catch (Exception e) {
             log.error("test_getInvitationCode={}", e);
         }
+//        TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
     }
 
 }

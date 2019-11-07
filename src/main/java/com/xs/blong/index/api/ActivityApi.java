@@ -1,8 +1,8 @@
 package com.xs.blong.index.api;
 
 import com.xs.blong.index.api.service.ActivityApiService;
-import com.xs.blong.index.exception.BlongException;
 import com.xs.blong.index.req.GetInvitationCodeReq;
+import com.xs.blong.index.req.SaveInvitationChannelReq;
 import com.xs.blong.index.resp.BaseResp;
 import com.xs.blong.index.resp.GetInvitationCodeResp;
 import com.xs.blong.index.util.JsonUtil;
@@ -19,7 +19,7 @@ import org.springframework.util.StringUtils;
 @Api("活动API")
 @Slf4j
 @Service
-public class ActivityApi {
+public class ActivityApi extends BaseApi {
 
     @Autowired
     private ActivityApiService activityApiService;
@@ -51,12 +51,7 @@ public class ActivityApi {
 
         } catch (Exception e) {
             log.warn("ActivityApi.getInvitationCode ERROR,e={}", e);
-            if (e instanceof BlongException) {
-                BlongException be = (BlongException) e;
-                response.structureFail(request.getReqNo(), be.getCode(), be.getMessage());
-            } else {
-                response.structureFail(request.getReqNo(), null, null);
-            }
+            catchException(e, request, response);
         }
         log.info("ActivityApi.getInvitationCode END,response={}", response);
         return JsonUtil.toJson(response);
@@ -78,29 +73,23 @@ public class ActivityApi {
             return BaseResp.fastFail().toString();
         }
 
-        GetInvitationCodeReq request = JsonUtil.toObject(req, GetInvitationCodeReq.class);
+        SaveInvitationChannelReq request = JsonUtil.toObject(req, SaveInvitationChannelReq.class);
 
-        GetInvitationCodeResp response = new GetInvitationCodeResp();
+        BaseResp response = new BaseResp();
         response.setReqNo(request.getReqNo());
         try {
 
             request.verify();
 
-            response = activityApiService.doGetInvitationCode(request);
+            response = activityApiService.saveInvitationChannel(request);
 
         } catch (Exception e) {
             log.warn("ActivityApi.saveInvitationChannel ERROR,e={}", e);
-            if (e instanceof BlongException) {
-                BlongException be = (BlongException) e;
-                response.structureFail(request.getReqNo(), be.getCode(), be.getMessage());
-            } else {
-                response.structureFail(request.getReqNo(), null, null);
-            }
+            catchException(e, request, response);
         }
         log.info("ActivityApi.saveInvitationChannel END,response={}", response);
         return JsonUtil.toJson(response);
     }
-
 
 
 }
