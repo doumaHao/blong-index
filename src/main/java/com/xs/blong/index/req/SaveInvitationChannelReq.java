@@ -18,9 +18,6 @@ public class SaveInvitationChannelReq extends BaseReq {
     private String type;
 
     public String verify() {
-        if (StringUtils.isEmpty(channel)) {
-            throw new BlongException(ErrorType.PARAM_NULL_ERROR, "邀请渠道");
-        }
         if (StringUtils.isEmpty(type)) {
             throw new BlongException(ErrorType.PARAM_NULL_ERROR, "邀请种类");
         }
