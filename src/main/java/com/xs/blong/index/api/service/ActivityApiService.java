@@ -48,16 +48,6 @@ public class ActivityApiService {
             return resp;
         }
 
-        //查看手机号是否已经获取过邀请码
-        condition = new EntityWrapper();
-        condition.eq("phone", request.getPhone());
-        List<ActivityInviteCode> listByPhone = activityInviteCodeDao.selectList(condition);
-        if (!CollectionUtils.isEmpty(listByPhone)) {
-            resp.setInvitCode(listByPhone.get(0).getInvitCode());
-            log.info("ActivityApiService.doGetInvitationCode,resp={}", resp);
-            return resp;
-        }
-
         //获取邀请码
         ActivityInviteCode activityInviteCode = activityInviteCodeDao.get1stWhenPhoneNull();
         if (activityInviteCode == null) {
